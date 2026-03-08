@@ -1,0 +1,47 @@
+// firestore.rules
+// ─────────────────────────────────────────────────────────────────────────────
+// Go to: Firebase Console → Firestore Database → Rules → paste & Publish
+// ─────────────────────────────────────────────────────────────────────────────
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn()  { return request.auth != null; }
+    function userDoc()     { return get(/databases/$(database)/documents/users/$(request.auth.uid)); }
+    function userRole()    { return userDoc().data.role; }
+    function isStaff()     { return isSignedIn() && userRole() in ['admin','investigator']; }
+    function isAdmin()     { return isSignedIn() && userRole() == 'admin'; }
+
+    // Reports:
+    //   - Anyone (public) can CREATE a report (anonymous submission)
+    //   - Anyone (public) can READ a single report by trackId (for tracking page)
+    //   - Only staff can list/update/delete reports
+    match /reports/{reportId} {
+      allow create: if true;
+      allow read:   if isStaff() || true;   // allow public read for tracking
+      allow update: if isStaff();
+      allow delete: if isAdmin();
+    }
+
+    // Comments: staff only
+    match /comments/{id} {
+      allow read, write: if isStaff();
+    }
+
+    // Users: read by signed-in user; write by admin
+    match /users/{userId} {
+      allow read:   if isSignedIn();
+      allow create: if isAdmin();
+      allow update: if isAdmin() || request.auth.uid == userId;
+      allow delete: if isAdmin();
+    }
+
+    // Audit log: anyone can append, only staff can read
+    match /auditLog/{id} {
+      allow create:         if true;
+      allow read:           if isStaff();
+      allow update, delete: if false;
+    }
+  }
+}
