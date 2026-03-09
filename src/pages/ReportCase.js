@@ -14,7 +14,7 @@ const IcoX      = () => <svg width="10" height="10" viewBox="0 0 24 24" fill="no
 const IcoTrack  = () => <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>;
 
 const CATEGORIES=[['bribery','Bribery & Kickbacks'],['fraud','Fraud & Embezzlement'],['abuse_of_power','Abuse of Power'],['nepotism','Nepotism & Favoritism'],['police_misconduct','Police Misconduct'],['government_corruption','Government Corruption'],['corporate_fraud','Corporate Fraud'],['electoral_fraud','Electoral Fraud'],['other','Other']];
-const SEVERITIES=[{v:'low',label:'Low',dot:'#10b981',active:'active-low'},{v:'medium',label:'Medium',dot:'#f59e0b',active:'active-medium'},{v:'high',label:'High',dot:'#ef4444',active:'active-high'},{v:'critical',label:'Critical',dot:'#dc2626',active:'active-critical'}];
+const SEVERITIES=[{v:'low',label:'Low',dot:'#10b981'},{v:'medium',label:'Medium',dot:'#f59e0b'},{v:'high',label:'High',dot:'#ef4444'},{v:'critical',label:'Critical',dot:'#dc2626'}];
 
 export default function ReportCase() {
   const [isAnon,     setIsAnon]     = useState(true);
@@ -41,7 +41,7 @@ export default function ReportCase() {
     finally { setSubmitting(false); setProgress(''); }
   };
 
-  /* ── SUCCESS ─────────────────────────────────── */
+  /* SUCCESS */
   if (done) return (
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',minHeight:'calc(100vh - 68px)',padding:24,background:'#f9fafb'}} className="fade-in">
       <div style={{width:'100%',maxWidth:460,background:'white',borderRadius:20,border:'1.5px solid #e5e7eb',overflow:'hidden',boxShadow:'0 8px 32px rgba(0,0,0,0.08)'}}>
@@ -65,14 +65,14 @@ export default function ReportCase() {
     </div>
   );
 
-  /* ── FORM ────────────────────────────────────── */
+  /* FORM */
   return (
-    <div style={{background:'#f9fafb',minHeight:'calc(100vh - 68px)',padding:'48px 24px'}} className="fade-in">
+    <div className="report-wrap fade-in" style={{background:'#f9fafb',minHeight:'calc(100vh - 68px)',padding:'48px 24px'}}>
       <div style={{maxWidth:720,margin:'0 auto'}}>
         <h1 style={{fontSize:'2rem',fontWeight:800,letterSpacing:'-0.5px',marginBottom:8}}>Report a Corruption Case</h1>
         <p style={{color:'#6b7280',marginBottom:28,lineHeight:1.6}}>Your identity is protected. All information is encrypted and handled confidentially.</p>
 
-        <div style={{background:'white',border:'1.5px solid #e5e7eb',borderRadius:20,padding:'28px',boxShadow:'0 4px 16px rgba(0,0,0,0.06)'}}>
+        <div className="report-card" style={{background:'white',border:'1.5px solid #e5e7eb',borderRadius:20,padding:'28px',boxShadow:'0 4px 16px rgba(0,0,0,0.06)'}}>
           {/* Anonymous toggle */}
           <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',background:'#f0f9ff',border:'1.5px solid #bae6fd',borderRadius:12,padding:'14px 18px',marginBottom:24}}>
             <div style={{display:'flex',alignItems:'center',gap:10}}>
@@ -91,7 +91,7 @@ export default function ReportCase() {
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16}}>
+            <div className="form-row-2" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16}}>
               <div className="field">
                 <label className="field-label">Case Title *</label>
                 <input className="field-input" {...register('title',{required:'Required'})} placeholder="Brief title of the incident"/>
@@ -114,7 +114,7 @@ export default function ReportCase() {
               {errors.description && <span className="field-error">{errors.description.message}</span>}
             </div>
 
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16}}>
+            <div className="form-row-2" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16}}>
               <div className="field">
                 <label className="field-label">Location / Department</label>
                 <input className="field-input" {...register('location')} placeholder="e.g. City Hall, Block B"/>
