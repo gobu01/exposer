@@ -46,7 +46,7 @@ export default function TrackCase() {
 
   return (
     <div style={{background:'#f9fafb',minHeight:'calc(100vh - 68px)'}}>
-      <div style={{maxWidth:660,margin:'0 auto',padding:'60px 24px 80px'}} className="fade-in">
+      <div className="track-wrap fade-in" style={{maxWidth:660,margin:'0 auto',padding:'60px 24px 80px'}}>
         <h1 style={{fontSize:'2.2rem',fontWeight:800,letterSpacing:'-1px',marginBottom:10,textAlign:'center'}}>
           Track Your Report
         </h1>
@@ -73,9 +73,7 @@ export default function TrackCase() {
               fontFamily:'Inter,sans-serif',
               boxShadow:'0 4px 12px rgba(14,165,233,0.3)',
               transition:'all 0.2s',
-            }}
-            onMouseEnter={e=>{if(!loading){e.currentTarget.style.opacity='0.92';e.currentTarget.style.transform='translateY(-1px)';}}}
-            onMouseLeave={e=>{e.currentTarget.style.opacity='1';e.currentTarget.style.transform='translateY(0)';}}>
+            }}>
               {loading?<div className="spinner"/>:<IcoSearch/>}
               Track
             </button>
