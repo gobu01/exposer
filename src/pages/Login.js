@@ -156,13 +156,13 @@ export default function Login() {
               <p style={{ fontWeight: 600, color: '#374151', marginBottom: 4 }}></p>
               <p></p>
               <p><code style={{ background: '#f9fafb', padding: '1px 5px', borderRadius: 4, color: '#374151' }}></code></p>
-              <code style={{ display: 'block', marginTop: 6, background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: 6, padding: '8px 12px', color: '#374151', fontSize: '0.7rem', lineHeight: 1.8 }}>
-                
+              <code style={{ display: 'block', marginTop: 6, background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: 6, padding: '8px 12px', color: '#374151', fontSize: '0.7rem', lineHeight: 1.8 }}>    
               </code>
             </div>
           </div>
         </div>
         <p style={{ textAlign: 'center', marginTop: 14, fontSize: '0.8rem' }}>
+          
           <Link to="/" style={{ color: '#9ca3af' }}>← Back to EXPOSER</Link>
         </p>
       </div>
