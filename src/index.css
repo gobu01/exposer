@@ -99,3 +99,87 @@ a { color: inherit; text-decoration: none; }
 /* ── ANIMATIONS ──────────────────────────────────── */
 .fade-in { animation:fadeIn 0.3s ease; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+/* ════════════════════════════════════════════
+   RESPONSIVE — MOBILE & TABLET
+   ════════════════════════════════════════════ */
+
+/* ── Tablet (≤ 900px) ────────────────────── */
+@media (max-width: 900px) {
+
+  /* Navbar */
+  .nav-desktop { display: none !important; }
+  .nav-hamburger { display: flex !important; }
+  nav.navbar { padding: 0 20px !important; }
+
+  /* Home hero */
+  .hero-h1 { font-size: 3rem !important; letter-spacing: -1px !important; }
+  .hero-stats-row { flex-direction: column !important; border-radius: 12px !important; }
+  .hero-stats-row > div { border-right: none !important; border-bottom: 1px solid #f3f4f6; }
+  .hero-stats-row > div:last-child { border-bottom: none; }
+
+  /* Features grid: 2 columns */
+  .features-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Dashboard stat cards: 2 columns */
+  .dash-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Charts: stack vertically */
+  .charts-grid { grid-template-columns: 1fr !important; }
+
+  /* Report detail: stack vertically */
+  .detail-grid { grid-template-columns: 1fr !important; }
+
+  /* About cards: 1 column */
+  .about-cards-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── Mobile (≤ 600px) ────────────────────── */
+@media (max-width: 600px) {
+
+  /* Hero */
+  .hero-section { padding: 48px 20px 40px !important; }
+  .hero-h1 { font-size: 2.4rem !important; letter-spacing: -0.5px !important; }
+  .hero-p { font-size: 0.95rem !important; }
+  .hero-buttons { flex-direction: column !important; gap: 10px !important; }
+  .hero-buttons a, .hero-buttons button { width: 100% !important; text-align: center !important; justify-content: center !important; }
+
+  /* Features: 1 column */
+  .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .features-section { padding: 40px 20px !important; }
+
+  /* Form: kill 2-col rows */
+  .form-row-2 { grid-template-columns: 1fr !important; gap: 0 !important; }
+
+  /* Dashboard */
+  .dash-page-wrap { padding: 20px 16px 40px !important; }
+  .dash-stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .dash-header { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .dash-actions-row { width: 100% !important; }
+
+  /* Table: make it scrollable */
+  .dash-table-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+
+  /* Track / Report pages */
+  .track-wrap { padding: 36px 16px 60px !important; }
+  .report-wrap { padding: 32px 16px !important; }
+  .report-card { padding: 20px 16px !important; border-radius: 14px !important; }
+
+  /* Login card */
+  .login-wrap { padding: 20px 16px !important; }
+  .login-card { border-radius: 14px !important; }
+  .login-form-body { padding: 20px 20px 24px !important; }
+
+  /* About page */
+  .about-wrap { padding: 36px 20px 60px !important; }
+  .about-hotline { flex-direction: column !important; text-align: center !important; }
+  .about-hotline a { width: 100% !important; text-align: center !important; }
+
+  /* Report detail */
+  .detail-wrap { padding: 20px 16px 48px !important; }
+  .detail-header { flex-direction: column !important; align-items: flex-start !important; }
+  .detail-badges { margin-top: 8px; }
+
+  /* Severity buttons */
+  .sev-row { flex-wrap: wrap !important; }
+  .sev-row button { flex: 1 1 calc(50% - 4px) !important; }
+}
