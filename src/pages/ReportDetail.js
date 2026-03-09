@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 const IcoArrow  = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>;
 const IcoClip   = () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>;
 const IcoAlert  = () => <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>;
-const IcoCheck  = () => <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>;
+const IcoCheckSm= () => <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>;
 const IcoPlus   = () => <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>;
 
 const STATUS_OPTS=['pending','reviewing','investigating','escalated','resolved','dismissed'];
@@ -72,24 +72,24 @@ export default function ReportDetail() {
   if(!report)return(<div style={{textAlign:'center',padding:'80px'}}><h2>Report Not Found</h2><button className="btn btn-ghost" style={{marginTop:16}} onClick={()=>navigate('/dashboard')}>Back</button></div>);
 
   return(
-    <div style={{background:'#f9fafb',minHeight:'calc(100vh - 68px)',padding:'32px 40px 60px'}} className="fade-in">
+    <div className="detail-wrap fade-in" style={{background:'#f9fafb',minHeight:'calc(100vh - 68px)',padding:'32px 40px 60px'}}>
       <div style={{maxWidth:1000,margin:'0 auto'}}>
         <button className="btn btn-ghost" style={{marginBottom:20,fontSize:'0.82rem',padding:'8px 14px',gap:6}} onClick={()=>navigate('/dashboard')}>
           <IcoArrow/> Dashboard
         </button>
 
-        <div style={{display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:22,flexWrap:'wrap',gap:12}}>
+        <div className="detail-header" style={{display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:22,flexWrap:'wrap',gap:12}}>
           <div>
             <div style={{fontFamily:'monospace',fontSize:'0.82rem',color:'#0ea5e9',fontWeight:700,letterSpacing:'0.1em',marginBottom:6}}>{report.trackId}</div>
             <h1 style={{fontSize:'1.6rem',fontWeight:800,letterSpacing:'-0.5px',color:'#111827'}}>{report.title}</h1>
           </div>
-          <div style={{display:'flex',gap:7}}>
+          <div className="detail-badges" style={{display:'flex',gap:7}}>
             <span className={'badge badge-'+report.severity} style={{padding:'5px 12px',fontSize:'0.76rem'}}>{report.severity}</span>
             <span className={'badge badge-'+report.status} style={{padding:'5px 12px',fontSize:'0.76rem'}}>{(report.status||'').replace(/_/g,' ')}</span>
           </div>
         </div>
 
-        <div style={{display:'grid',gridTemplateColumns:'1fr 290px',gap:18,alignItems:'start'}}>
+        <div className="detail-grid" style={{display:'grid',gridTemplateColumns:'1fr 290px',gap:18,alignItems:'start'}}>
           {/* LEFT */}
           <div style={{display:'flex',flexDirection:'column',gap:16}}>
 
@@ -167,7 +167,7 @@ export default function ReportDetail() {
                     opacity:(updating&&report.status!==s)?0.4:1,
                     display:'flex',alignItems:'center',gap:7,
                   }}>
-                    {report.status===s&&<span style={{color:'#0ea5e9',flexShrink:0}}><IcoCheck/></span>}
+                    {report.status===s&&<span style={{color:'#0ea5e9',flexShrink:0}}><IcoCheckSm/></span>}
                     {s.replace(/_/g,' ')}
                   </button>
                 ))}
