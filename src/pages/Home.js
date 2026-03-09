@@ -30,11 +30,109 @@ const COLOR_MAP = {
 export default function Home() {
   return (
     <div className="fade-in">
-      {/* ── HERO ─────────────────────────────────── */}
+      {/* HERO */}
       <div style={{ borderBottom: '1px solid #f3f4f6' }}>
-        <div style={{
+        <div className="hero-section" style={{
           display:'flex', flexDirection:'column', alignItems:'center',
           textAlign:'center', padding:'80px 24px 70px',
+          maxWidth:900, margin:'0 auto',
+        }}>
+          <div style={{
+            display:'inline-flex', alignItems:'center', gap:6,
+            padding:'8px 18px', background:'#f0f9ff',
+            border:'1.5px solid #bae6fd', borderRadius:20,
+            fontSize:'0.85rem', fontWeight:500, color:'#0369a1', marginBottom:32,
+          }}>
+            <IcoStar /> Fighting Corruption Together
+          </div>
+
+          <h1 className="hero-h1" style={{
+            fontSize:'5rem', fontWeight:900, lineHeight:1.0,
+            letterSpacing:'-2px', marginBottom:28,
+          }}>
+            <span style={{color:'#0ea5e9'}}>Expose </span>
+            <span style={{background:'linear-gradient(90deg,#818cf8,#ec4899)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>Corruption</span>
+            <br/>
+            <span style={{color:'#111827'}}>Protect Democracy</span>
+          </h1>
+
+          <p className="hero-p" style={{fontSize:'1.15rem',color:'#6b7280',maxWidth:560,lineHeight:1.75,marginBottom:40}}>
+            A secure, anonymous platform where citizens report corruption, provide evidence,
+            and track accountability. Together, we build a transparent and fair society.
+          </p>
+
+          <div className="hero-buttons" style={{display:'flex',gap:14,marginBottom:64}}>
+            <Link to="/report" style={{
+              padding:'16px 36px',
+              background:'linear-gradient(135deg,#0ea5e9,#ec4899)',
+              color:'white', borderRadius:12, fontSize:'1rem', fontWeight:700,
+              boxShadow:'0 6px 20px rgba(14,165,233,0.3)', transition:'all 0.2s',
+            }}
+            onMouseEnter={e=>{e.currentTarget.style.opacity='0.92';e.currentTarget.style.transform='translateY(-2px)';}}
+            onMouseLeave={e=>{e.currentTarget.style.opacity='1';e.currentTarget.style.transform='translateY(0)';}}>
+              Report a Case
+            </Link>
+            <Link to="/about" style={{
+              padding:'16px 36px',
+              background:'white', color:'#374151',
+              border:'1.5px solid #e5e7eb', borderRadius:12,
+              fontSize:'1rem', fontWeight:600, transition:'all 0.15s',
+            }}
+            onMouseEnter={e=>{e.currentTarget.style.borderColor='#0ea5e9';e.currentTarget.style.color='#0ea5e9';}}
+            onMouseLeave={e=>{e.currentTarget.style.borderColor='#e5e7eb';e.currentTarget.style.color='#374151';}}>
+              Learn More
+            </Link>
+          </div>
+
+          {/* Stats */}
+          <div className="hero-stats-row" style={{display:'flex',gap:0,borderRadius:16,overflow:'hidden',border:'1px solid #e5e7eb',boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+            {[['100%','Anonymous','#0ea5e9'],['24/7','Availability','#ec4899'],['Secure','Encrypted','#818cf8']].map(([n,l,c],i)=>(
+              <div key={l} style={{padding:'20px 48px',textAlign:'center',background:'white',borderRight:i<2?'1px solid #f3f4f6':'none'}}>
+                <div style={{fontSize:'2rem',fontWeight:900,color:c,letterSpacing:'-1px'}}>{n}</div>
+                <div style={{fontSize:'0.78rem',color:'#9ca3af',marginTop:4,fontWeight:500}}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div style={{height:1,background:'linear-gradient(90deg,transparent,#e5e7eb,transparent)'}}/>
+
+      {/* FEATURES */}
+      <div className="features-section" style={{padding:'64px 40px',maxWidth:1100,margin:'0 auto'}}>
+        <h2 style={{fontSize:'2.2rem',fontWeight:800,letterSpacing:'-1px',textAlign:'center',marginBottom:10}}>
+          Why Choose <span style={{color:'#0ea5e9'}}>EXPOSER</span>?
+        </h2>
+        <p style={{textAlign:'center',color:'#6b7280',marginBottom:40,fontSize:'1rem'}}>
+          Everything you need to fight corruption — safely and effectively.
+        </p>
+        <div className="features-grid" style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20}}>
+          {FEATURES.map(({Icon,colorClass,title,desc})=>{
+            const {bg,color}=COLOR_MAP[colorClass];
+            return (
+              <div key={title} style={{
+                background:'white',border:'1.5px solid #f3f4f6',borderRadius:16,
+                padding:'28px',transition:'all 0.2s',cursor:'default',
+              }}
+              onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-4px)';e.currentTarget.style.boxShadow='0 12px 32px rgba(0,0,0,0.08)';e.currentTarget.style.borderColor='#e5e7eb';}}
+              onMouseLeave={e=>{e.currentTarget.style.transform='translateY(0)';e.currentTarget.style.boxShadow='none';e.currentTarget.style.borderColor='#f3f4f6';}}>
+                <div style={{
+                  width:48,height:48,borderRadius:12,background:bg,color,
+                  display:'flex',alignItems:'center',justifyContent:'center',marginBottom:16,
+                }}>
+                  <Icon/>
+                </div>
+                <h3 style={{fontSize:'1rem',fontWeight:700,marginBottom:8,color:'#111827'}}>{title}</h3>
+                <p style={{fontSize:'0.85rem',color:'#6b7280',lineHeight:1.7}}>{desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}          textAlign:'center', padding:'80px 24px 70px',
           maxWidth:900, margin:'0 auto',
         }}>
           <div style={{
