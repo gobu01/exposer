@@ -19,7 +19,7 @@ const STACK=['React 18','Firebase Auth','Cloud Firestore','Firebase Storage','Re
 export default function About() {
   return (
     <div style={{background:'#f9fafb',minHeight:'calc(100vh - 68px)'}} className="fade-in">
-      <div style={{maxWidth:900,margin:'0 auto',padding:'56px 40px 72px'}}>
+      <div className="about-wrap" style={{maxWidth:900,margin:'0 auto',padding:'56px 40px 72px'}}>
         <h1 style={{fontSize:'2.4rem',fontWeight:800,letterSpacing:'-1px',marginBottom:12}}>
           About <span style={{color:'#0ea5e9'}}>EXPOSER</span>
         </h1>
@@ -28,7 +28,7 @@ export default function About() {
           and track accountability. We believe transparency is the foundation of a fair society.
         </p>
 
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:18,marginBottom:28}}>
+        <div className="about-cards-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:18,marginBottom:28}}>
           {CARDS.map(({Icon,color,bg,title,desc})=>(
             <div key={title} style={{background:'white',border:'1.5px solid #e5e7eb',borderRadius:16,padding:'24px',boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
               <div style={{width:48,height:48,borderRadius:12,background:bg,color,display:'flex',alignItems:'center',justifyContent:'center',marginBottom:14}}><Icon/></div>
@@ -49,7 +49,7 @@ export default function About() {
         </div>
 
         {/* Hotline */}
-        <div style={{
+        <div className="about-hotline" style={{
           background:'linear-gradient(135deg,#0ea5e9,#818cf8,#ec4899)',
           borderRadius:20,padding:'28px 32px',
           display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:20,
@@ -68,9 +68,7 @@ export default function About() {
             padding:'12px 24px',background:'white',color:'#0ea5e9',
             borderRadius:10,fontWeight:700,fontSize:'0.92rem',
             boxShadow:'0 4px 14px rgba(0,0,0,0.1)',transition:'all 0.2s',
-          }}
-          onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-1px)';}}
-          onMouseLeave={e=>{e.currentTarget.style.transform='translateY(0)';}}>
+          }}>
             Submit a Report
           </Link>
         </div>
