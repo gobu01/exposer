@@ -100,12 +100,10 @@ export default function Login() {
 
             <div style={{height:1,background:'#f3f4f6',margin:'20px 0 16px'}}/>
             <div style={{fontSize:'0.75rem',color:'#9ca3af',lineHeight:1.8}}>
-              <p style={{fontWeight:600,color:'#374151',marginBottom:4}}>First time setup:</p>
-              <p>Firebase Console → Auth → Add user → copy UID</p>
-              <p>Firestore → <code style={{background:'#f9fafb',padding:'1px 5px',borderRadius:4,color:'#374151'}}>users</code> collection → add doc:</p>
-              <code style={{display:'block',marginTop:6,background:'#f9fafb',border:'1px solid #e5e7eb',borderRadius:6,padding:'8px 12px',color:'#374151',fontSize:'0.7rem',lineHeight:1.8}}>
-                {`{ uid, name, email, role: "admin", isActive: true }`}
-              </code>
+              <p style={{fontWeight:600,color:'#374151',marginBottom:4}}></p>
+              <p></p>
+              <p> <code style={{background:'#f9fafb',padding:'1px 5px',borderRadius:4,color:'#374151'}}></code></p>
+              
             </div>
           </div>
         </div>
