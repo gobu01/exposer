@@ -66,16 +66,16 @@ export default function Dashboard() {
   );
 
   return (
-    <div style={{background:'#f9fafb',minHeight:'calc(100vh - 68px)',padding:'32px 40px 48px'}} className="fade-in">
+    <div className="dash-page-wrap fade-in" style={{background:'#f9fafb',minHeight:'calc(100vh - 68px)',padding:'32px 40px 48px'}}>
       <div style={{maxWidth:1200,margin:'0 auto'}}>
 
         {/* Header */}
-        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:28,flexWrap:'wrap',gap:14}}>
+        <div className="dash-header" style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:28,flexWrap:'wrap',gap:14}}>
           <div>
             <h1 style={{fontSize:'1.8rem',fontWeight:800,letterSpacing:'-0.5px',marginBottom:4}}>Admin Dashboard</h1>
             <p style={{color:'#6b7280',fontSize:'0.85rem'}}>Real-time case management · {profile?.name}</p>
           </div>
-          <div style={{display:'flex',gap:8}}>
+          <div className="dash-actions-row" style={{display:'flex',gap:8}}>
             <button className="btn btn-ghost" style={{fontSize:'0.85rem',padding:'9px 16px',gap:6}} onClick={()=>{}}>
               <IcoRefresh/> Refresh
             </button>
@@ -86,7 +86,7 @@ export default function Dashboard() {
         </div>
 
         {/* Stats */}
-        <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:16,marginBottom:20}}>
+        <div className="dash-stats-grid" style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:16,marginBottom:20}}>
           {STAT_CARDS.map(({Icon,val,color,bg,label})=>(
             <div key={label} style={{background:'white',border:'1.5px solid #e5e7eb',borderRadius:14,padding:'20px 22px',boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
               <div style={{width:40,height:40,borderRadius:10,background:bg,color,display:'flex',alignItems:'center',justifyContent:'center',marginBottom:12}}><Icon/></div>
@@ -98,7 +98,7 @@ export default function Dashboard() {
 
         {/* Charts */}
         {reports.length>0 && (
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,marginBottom:20}}>
+          <div className="charts-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,marginBottom:20}}>
             <div style={{background:'white',border:'1.5px solid #e5e7eb',borderRadius:14,padding:'20px',boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
               <p style={{fontWeight:700,fontSize:'0.88rem',marginBottom:14,color:'#111827'}}>Reports by Status</p>
               <ResponsiveContainer width="100%" height={150}>
@@ -152,7 +152,7 @@ export default function Dashboard() {
               {reports.length===0?'No reports yet. Submit the first one!':'No reports match your filter.'}
             </div>
           ) : (
-            <div style={{overflowX:'auto'}}>
+            <div className="dash-table-wrap" style={{overflowX:'auto'}}>
               <table style={{width:'100%',borderCollapse:'collapse'}}>
                 <thead>
                   <tr>{['Tracking ID','Title','Category','Severity','Status','Filed','Actions'].map(h=>(
