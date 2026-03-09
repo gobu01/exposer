@@ -34,13 +34,13 @@ export default function Login() {
   };
 
   return (
-    <div style={{
+    <div className="login-wrap fade-in" style={{
       minHeight:'calc(100vh - 68px)', display:'flex',
       alignItems:'center', justifyContent:'center',
       background:'#f9fafb', padding:24,
-    }} className="fade-in">
+    }}>
       <div style={{width:'100%',maxWidth:420}}>
-        <div style={{
+        <div className="login-card" style={{
           background:'white', borderRadius:20,
           border:'1.5px solid #e5e7eb',
           overflow:'hidden',
@@ -63,7 +63,7 @@ export default function Login() {
           </div>
 
           {/* Form */}
-          <div style={{padding:'28px 32px 32px'}}>
+          <div className="login-form-body" style={{padding:'28px 32px 32px'}}>
             {error && (
               <div style={{
                 display:'flex',alignItems:'center',gap:8,
