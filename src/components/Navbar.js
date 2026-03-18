@@ -121,13 +121,26 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+        {/* Desktop Links - absolutely centered */}
+        <div
+          className="nav-desktop"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 16,
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+          }}
+        >
           {navLink('/', 'Home')}
           {navLink('/report', 'Report Case')}
           {navLink('/track', 'Track Cases')}
           {navLink('/about', 'About')}
-          <div style={{ width: 1, height: 24, background: '#e5e7eb', margin: '0 6px' }} />
+        </div>
+
+        {/* Right side actions */}
+        <div className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           {profile ? (
             <>
               {navLink('/dashboard', 'Dashboard')}
